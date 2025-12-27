@@ -1,0 +1,517 @@
+
+
+
+
+    /*
+ * Hoja de Estilos: styles.css
+ * Prefijo: app-
+ * ----------------------------
+ * Estilos modulares, organizados por secciones y temas.
+ */
+
+/* ==========================================================================
+   1. Variables CSS (Design Tokens & Themes)
+   ========================================================================== */
+
+:root {
+    /* -- LIGHT MODE (Valores por defecto) -- */
+    --color-background-body: #F5F5F5;
+    --color-sidebar-bg: #000000;
+    --color-panel-bg: #FFFFFF;
+    --color-text-primary: #111111;
+    --color-text-secondary: #666666;
+    --color-item-active-bg: #000000;
+    --color-item-active-text: #FFFFFF;
+    --color-item-hover-bg: #EDEDED;
+    --color-divider: #E0E0E0;
+    --color-shadow: rgba(0, 0, 0, 0.1);
+    --color-theme-switch-bg: #E0E0E0;
+    --color-theme-switch-icon: #111111;
+    --color-action-button-bg: #F0F0F0;
+    --color-action-button-hover: #DEDEDE;
+
+    /* Tipografía */
+    --font-family-base: 'Inter', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+
+    /* Escala Tipográfica */
+    --font-size-count: 0.875rem; /* 14px */
+    --font-size-menu: 1rem;      /* 16px */
+    --font-size-title: 1.25rem;  /* 20px */
+
+    /* Espaciado */
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-border-gap: 10px; /* Separación de 10px del borde del body */
+    --spacing-panel-gap: 10px;  /* Separación entre sidebar y panel (dentro del Grid) */
+
+    /* Border Radius */
+    --border-radius-main: 24px;
+    --border-radius-item: 12px;
+
+    /* Dimensiones y Transiciones */
+    --sidebar-width-collapsed: 80px;
+    --submenu-width-expanded: 280px;
+    --item-height: 56px;
+    --transition-speed: 0.3s;
+    --transition-easing: ease-in-out;
+
+    --color-card-background-sidebar-float: #21232B;
+    --border-radius-card-sidebar-float: 16px;
+    --spacing-sm-sidebar-float:8px;
+    --border-radius-icon-sidebar-float:   8px;
+    --transition-speed-sidebar-float:       0.2s;
+    --color-text-secondary-sidebar-float: #6B6D7A;
+    --color-accent-red-sidebar-float: #F2545F;
+    --color-text-primary-sidebar-float: #D6D7DA;
+
+
+}
+
+/* -- DARK MODE -- */
+[data-theme="dark"] {
+    --color-background-body: #1E1E1E;
+    --color-sidebar-bg: #0A0A0A;
+    --color-panel-bg: #282828;
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #AAAAAA;
+    --color-item-active-bg: #FFFFFF;
+    --color-item-active-text: #ffffff;
+    --color-item-hover-bg: #3A3A3A;
+    --color-divider: #444444;
+    --color-shadow: rgba(0, 0, 0, 0.4);
+    --color-theme-switch-bg: #4A4A4A;
+    --color-theme-switch-icon: #FFFFFF;
+    --color-action-button-bg: #3A3A3A;
+    --color-action-button-hover: #4A4A4A;
+}
+
+
+/* ==========================================================================
+   2. Reset y Estilos Base
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-menu);
+    color: var(--color-text-primary);
+    background-color: var(--color-background-body);
+    min-height: 100vh;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+a, button {
+    text-decoration: none;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-speed) var(--transition-easing);
+}
+
+/* Foco de Accesibilidad */
+*:focus-visible {
+    outline: 2px solid var(--color-text-primary);
+    outline-offset: 2px;
+    border-radius: var(--border-radius-item);
+}
+
+/* Iconos SVG */
+.app-icon {
+    width: 24px;
+    height: 24px;
+    stroke: var(--color-text-secondary);
+    transition: stroke var(--transition-speed);
+}
+.app-icon--sm {
+    width: 20px;
+    height: 20px;
+    margin-right: var(--spacing-sm);
+    stroke: var(--color-text-secondary);
+}
+
+
+/* ==========================================================================
+   3. Layout Flotante y Animación con Grid
+   ========================================================================== */
+
+.app-container {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    /* Columnas: 1. Espacio sidebar + 2. Panel (0) + 3. Contenido (1fr) */
+    grid-template-columns: var(--sidebar-width-collapsed) 0 1fr;
+    grid-template-rows: 1fr;
+    
+    padding: var(--spacing-border-gap);
+    overflow: hidden;
+    
+    transition: grid-template-columns var(--transition-speed) var(--transition-easing);
+}
+
+/* Estado de columna de Submenú expandido */
+.app-container.panel-expanded {
+     /* La columna 2 del Grid toma el ancho expandido + el gap entre sidebar y panel */
+    grid-template-columns: var(--sidebar-width-collapsed) calc(var(--submenu-width-expanded) + var(--spacing-panel-gap)) 1fr;
+}
+
+
+/* 3.1. Sidebar Principal (Fija, Flota sobre el Grid) */
+.app-sidebar {
+    position: fixed;
+    top: var(--spacing-border-gap);
+    left: var(--spacing-border-gap);
+    height: calc(100vh - (2 * var(--spacing-border-gap)));
+    z-index: 100;
+    border-radius: var(--border-radius-main);
+    box-shadow: 0 4px 15px var(--color-shadow);
+
+    width: var(--sidebar-width-collapsed);
+    background-color: var(--color-sidebar-bg);
+    padding: var(--spacing-md) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color var(--transition-speed);
+}
+.app-sidebar__list {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.app-sidebar__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: var(--item-height);
+    margin: var(--spacing-sm) 0;
+    border-radius: var(--border-radius-item);
+    color: var(--color-item-active-text);
+}
+.app-sidebar__item .app-icon {
+    stroke: var(--color-item-active-text);
+}
+.app-sidebar__item--active {
+    background-color: var(--color-item-active-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+.app-sidebar__item--active .app-icon {
+    stroke: var(--color-item-active-text);
+}
+.app-sidebar__item:not(.app-sidebar__item--active):hover,
+.app-sidebar__item:not(.app-sidebar__item--active):focus-visible {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* 3.2. Switch de Tema */
+.app-theme-switch-container {
+    margin-top: auto;
+    margin-bottom: var(--spacing-md);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.app-theme-switch {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    background-color: var(--color-theme-switch-bg);
+    border-radius: var(--border-radius-item);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    overflow: hidden;
+}
+.app-theme-switch__icon {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    transition: transform var(--transition-speed), stroke var(--transition-speed);
+}
+.app-theme-switch__icon svg {
+    stroke: var(--color-theme-switch-icon);
+}
+.app-theme-switch__icon--moon {
+    transform: translateY(100%);
+}
+[data-theme="dark"] .app-theme-switch__icon--sun {
+    transform: translateY(-100%);
+}
+[data-theme="dark"] .app-theme-switch__icon--moon {
+    transform: translateY(0);
+}
+
+
+/* 3.3. Submenú/Panel de Contenido (Item de Grid) */
+.app-submenu-panel {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    z-index: 10;
+
+    background-color: var(--color-panel-bg);
+    color: var(--color-text-primary);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - (2 * var(--spacing-border-gap)));
+    
+    border-top-right-radius: var(--border-radius-main);
+    border-bottom-right-radius: var(--border-radius-main);
+    border-top-left-radius: var(--border-radius-item);
+    border-bottom-left-radius: var(--border-radius-item);
+    box-shadow: 0 4px 15px var(--color-shadow);
+    
+    /* Estado inicial: Oculto, desplazado para animar la entrada */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px); 
+    overflow-y: auto;
+    
+    transition: opacity var(--transition-speed), 
+                visibility var(--transition-speed), 
+                transform var(--transition-speed) var(--transition-easing), 
+                background-color var(--transition-speed);
+}
+
+.app-submenu-panel--expanded {
+    /* Estado final: Visible y en su posición normal, empujado por el gap */
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(var(--spacing-panel-gap)); 
+}
+
+/* -- Cabecera del Submenú -- */
+.app-submenu-panel__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md); 
+}
+.app-submenu-panel__title {
+    font-size: var(--font-size-title);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+    margin: 0;
+    color: var(--color-text-primary);
+}
+.app-submenu-panel__icon-button {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--border-radius-item);
+    background-color: var(--color-action-button-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    transition: background-color var(--transition-speed);
+}
+.app-submenu-panel__icon-button:hover,
+.app-submenu-panel__icon-button:focus-visible {
+    background-color: var(--color-action-button-hover);
+}
+.app-submenu-panel__icon-button .app-icon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--color-text-primary);
+}
+.app-submenu-panel__icon-button--close {
+    background: none; 
+    width: 24px;
+    height: 24px;
+}
+.app-submenu-panel__icon-button--close:hover {
+    background-color: var(--color-item-hover-bg);
+}
+/* -- Lista y Links -- */
+.app-submenu-panel__list {
+    list-style: none;
+    padding-bottom: var(--spacing-md);
+}
+.app-submenu-panel__link {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin: 4px 0;
+    border-radius: var(--border-radius-item);
+    font-weight: var(--font-weight-medium);
+}
+.app-submenu-panel__link--active {
+    background-color: var(--color-item-hover-bg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+.app-submenu-panel__link--active .app-icon--sm {
+    stroke: var(--color-text-primary);
+}
+.app-submenu-panel__link:hover:not(.app-submenu-panel__link--active) {
+    background-color: var(--color-item-hover-bg);
+}
+.app-submenu-panel__count {
+    font-size: var(--font-size-count);
+    background-color: var(--color-action-button-bg);
+    padding: 2px 6px;
+    border-radius: 6px;
+    margin-left: auto;
+    font-weight: var(--font-weight-regular);
+}
+.app-submenu-panel__link--chevron {
+    justify-content: space-between;
+}
+.app-submenu-panel__link--chevron::after {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>');
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-left: var(--spacing-sm);
+    opacity: 0.8;
+}
+/* Sub-secciones Colapsables */
+.app-submenu-panel__section {
+    padding: var(--spacing-md) 0;
+}
+.app-submenu-panel__section-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: var(--font-size-count);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    padding: 0 var(--spacing-md);
+}
+.app-submenu-panel__section-content {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    padding: 0 var(--spacing-md);
+    transition: max-height 0.3s ease-in-out, opacity 0.3s, padding 0.3s;
+}
+.app-submenu-panel__sub-link {
+    display: block;
+    padding: 4px 0;
+    margin-left: var(--spacing-md);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-count);
+}
+.app-submenu-panel__sub-link:hover {
+    color: var(--color-text-primary);
+}
+/* Divisor y Links Inferiores */
+.app-submenu-panel__divider {
+    border: none;
+    border-top: 1px solid var(--color-divider);
+    margin: var(--spacing-md) 0;
+    transition: border-color var(--transition-speed);
+}
+.app-submenu-panel__bottom-links {
+    margin-top: auto;
+}
+
+
+/* 3.4. Contenido Principal (Item de Grid) */
+.app-main-content {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    z-index: 1;
+    
+    height: calc(100vh - (2 * var(--spacing-border-gap)));
+    overflow-y: auto;
+    padding: var(--spacing-xl);
+    background-color: var(--color-background-body);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+.app-main-content__title {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+}
+.app-main-content__placeholder {
+    height: 100px;
+    background-color: var(--color-panel-bg);
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--border-radius-item);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+
+/* ==========================================================================
+   4. Media Queries (Responsive)
+   ========================================================================== */
+
+/* Móvil y Tablet (≤800px) - Revertido al layout fijo/superpuesto */
+@media (max-width: 800px) {
+    
+    .app-container {
+        display: block;
+        height: auto;
+        padding: 0;
+        grid-template-columns: none;
+    }
+    
+    /* Sidebar Fija (100vh) */
+    .app-sidebar {
+        top: 0;
+        left: 0;
+        height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+        width: var(--sidebar-width-collapsed);
+    }
+    
+    /* El Submenú vuelve a ser fijo y superpuesto (fixed) */
+    .app-submenu-panel {
+        position: fixed;
+        top: 0;
+        left: var(--sidebar-width-collapsed);
+        height: 100vh;
+        width: calc(100vw - var(--sidebar-width-collapsed));
+        border-radius: 0;
+        z-index: 99;
+        box-shadow: 0 0 10px var(--color-shadow);
+        
+        /* Animación de superposición */
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+        transform: translateX(-100%); 
+        transition: transform var(--transition-speed), opacity var(--transition-speed), visibility var(--transition-speed);
+    }
+    .app-submenu-panel--expanded {
+         transform: translateX(0);
+         opacity: 1;
+         pointer-events: auto;
+         visibility: visible;
+    }
+
+    /* El Main Content solo necesita padding */
+    .app-main-content {
+        width: 100vw;
+        padding-left: calc(var(--sidebar-width-collapsed) + var(--spacing-xl)); 
+        grid-column: auto;
+        min-height: 100vh;
+        height: auto;
+    }
+    
+    :root {
+         --sidebar-width-collapsed: 60px;
+         --spacing-border-gap: 0;
+    }
+}

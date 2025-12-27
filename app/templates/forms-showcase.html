@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios Inteligentes - Sistema Completo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <style>
+        .forms-showcase {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .form-section {
+            margin-bottom: 60px;
+        }
+        
+        .form-section__title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--color-text-primary);
+            border-bottom: 2px solid var(--color-divider);
+            padding-bottom: 8px;
+        }
+        
+        .form-section__description {
+            color: var(--color-text-secondary);
+            margin-bottom: 24px;
+        }
+        
+        .form-example {
+            background-color: var(--color-panel-bg);
+            padding: 24px;
+            border-radius: var(--border-radius-item);
+            margin-bottom: 24px;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    
+    <div class="forms-showcase">
+        <h1 style="font-size: 2.5rem; margin-bottom: 12px; color: var(--color-text-primary);">Formularios Inteligentes</h1>
+        <p style="font-size: 1.125rem; color: var(--color-text-secondary); margin-bottom: 40px;">Sistema completo de formularios con validación, auto-completado, y más</p>
+
+        <!-- FORMULARIO BÁSICO -->
+        <section class="form-section">
+            <h2 class="form-section__title">Formulario Básico de Contacto</h2>
+            <p class="form-section__description">Formulario simple con validación en tiempo real</p>
+            
+            <div class="form-example">
+                <form class="app-form" data-validate>
+                    <div class="app-form-group">
+                        <label class="app-form-label app-form-label--required" for="name">Nombre completo</label>
+                        <input type="text" class="app-input" id="name" required minlength="3" data-validate-realtime placeholder="Ingresa tu nombre">
+                        <span class="app-form-help">Mínimo 3 caracteres</span>
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-form-label app-form-label--required" for="email">Email</label>
+                        <input type="email" class="app-input" id="email" required data-validate-realtime placeholder="ejemplo@correo.com">
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="phone">Teléfono</label>
+                        <input type="tel" class="app-input" id="phone" pattern="[0-9]{10}" placeholder="1234567890">
+                        <span class="app-form-help">10 dígitos sin espacios</span>
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-form-label app-form-label--required" for="message">Mensaje</label>
+                        <textarea class="app-textarea" id="message" required minlength="10" maxlength="500" data-char-counter="500" placeholder="Escribe tu mensaje aquí..."></textarea>
+                    </div>
+
+                    <button type="submit" class="app-btn app-btn--primary">Enviar mensaje</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- FORMULARIO CON AUTO-COMPLETE -->
+        <section class="form-section">
+            <h2 class="form-section__title">Auto-completado Inteligente</h2>
+            <p class="form-section__description">Sugerencias mientras escribes</p>
+            
+            <div class="form-example">
+                <form class="app-form">
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="country">País</label>
+                        <input type="text" 
+                               class="app-input" 
+                               id="country" 
+                               placeholder="Escribe para buscar..."
+                               data-autocomplete='["Argentina", "Bolivia", "Brasil", "Chile", "Colombia", "Ecuador", "España", "México", "Perú", "Uruguay", "Venezuela"]'>
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="language">Lenguaje de programación</label>
+                        <input type="text" 
+                               class="app-input" 
+                               id="language" 
+                               placeholder="Escribe para buscar..."
+                               data-autocomplete='["JavaScript", "Python", "Java", "C++", "C#", "Ruby", "Go", "Rust", "PHP", "TypeScript"]'>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- TAG INPUT -->
+        <section class="form-section">
+            <h2 class="form-section__title">Input de Etiquetas</h2>
+            <p class="form-section__description">Agrega múltiples valores como tags</p>
+            
+            <div class="form-example">
+                <form class="app-form">
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="tags">Habilidades técnicas</label>
+                        <div class="app-tag-input" data-tag-input>
+                            <input type="text" class="app-tag-input__field" placeholder="Escribe y presiona Enter...">
+                        </div>
+                        <span class="app-form-help">Presiona Enter o coma para agregar una etiqueta</span>
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="tags2">Intereses</label>
+                        <div class="app-tag-input" data-tag-input>
+                            <input type="text" class="app-tag-input__field" placeholder="Agrega tus intereses...">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- PASSWORD CON STRENGTH METER -->
+        <section class="form-section">
+            <h2 class="form-section__title">Contraseña con Medidor de Fuerza</h2>
+            <p class="form-section__description">Indicador visual de seguridad de contraseña</p>
+            
+            <div class="form-example">
+                <form class="app-form">
+                    <div class="app-form-group">
+                        <label class="app-form-label app-form-label--required" for="password">Contraseña</label>
+                        <input type="password" class="app-input" id="password" required data-password-strength placeholder="Crea una contraseña segura">
+                        <span class="app-form-help">Usa mayúsculas, números y símbolos para mayor seguridad</span>
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-form-label app-form-label--required" for="password-confirm">Confirmar contraseña</label>
+                        <input type="password" class="app-input" id="password-confirm" required placeholder="Repite tu contraseña">
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- FORMULARIO GRID -->
+        <section class="form-section">
+            <h2 class="form-section__title">Formulario de Registro (Grid Layout)</h2>
+            <p class="form-section__description">Distribución en grid responsive</p>
+            
+            <div class="form-example">
+                <form class="app-form app-form--grid">
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="firstname">Nombre</label>
+                        <input type="text" class="app-input" id="firstname" placeholder="Tu nombre">
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="lastname">Apellido</label>
+                        <input type="text" class="app-input" id="lastname" placeholder="Tu apellido">
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="email2">Email</label>
+                        <input type="email" class="app-input" id="email2" placeholder="correo@ejemplo.com">
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="phone2">Teléfono</label>
+                        <input type="tel" class="app-input" id="phone2" placeholder="123-456-7890">
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="birthdate">Fecha de nacimiento</label>
+                        <input type="date" class="app-date-input" id="birthdate">
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="gender">Género</label>
+                        <select class="app-select" id="gender">
+                            <option value="">Selecciona...</option>
+                            <option value="male">Masculino</option>
+                            <option value="female">Femenino</option>
+                            <option value="other">Otro</option>
+                            <option value="prefer-not">Prefiero no decir</option>
+                        </select>
+                    </div>
+
+                    <div class="app-form-group app-form-group--full">
+                        <label class="app-form-label" for="address">Dirección completa</label>
+                        <input type="text" class="app-input" id="address" placeholder="Calle, número, ciudad, código postal">
+                    </div>
+
+                    <div class="app-form-group app-form-group--full">
+                        <button type="submit" class="app-btn app-btn--primary app-btn--block">Crear cuenta</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- TODOS LOS TIPOS DE INPUT -->
+        <section class="form-section">
+            <h2 class="form-section__title">Tipos de Input</h2>
+            <p class="form-section__description">Todos los controles de formulario disponibles</p>
+            
+            <div class="form-example">
+                <form class="app-form">
+                    <!-- Text Input -->
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="text-input">Text Input</label>
+                        <input type="text" class="app-input" id="text-input" placeholder="Escribe algo...">
+                    </div>
+
+                    <!-- Number Input -->
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="number-input">Number Input</label>
+                        <input type="number" class="app-input" id="number-input" min="0" max="100" placeholder="0-100">
+                    </div>
+
+                    <!-- Email Input -->
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="email-input">Email Input</label>
+                        <input type="email" class="app-input" id="email-input" placeholder="email@ejemplo.com">
+                    </div>
+
+                    <!-- URL Input -->
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="url-input">URL Input</label>
+                        <input type="url" class="app-input" id="url-input" placeholder="https://ejemplo.com">
+                    </div>
+
+                    <!-- Select -->
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="select-single">Select</label>
+                        <select class="app-select" id="select-single">
+                            <option value="">Selecciona una opción...</option>
+                            <option value="1">Opción 1</option>
+                            <option value="2">Opción 2</option>
+                            <option value="3">Opción 3</option>
+                        </select>
+                    </div>
+
+                    <!-- Multi Select -->
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="select-multi">Select Múltiple</label>
+                        <select class="app-select app-select--multiple" id="select-multi" multiple size="4">
+                            <option value="1">Opción 1</option>
+                            <option value="2">Opción 2</option>
+                            <option value="3">Opción 3</option>
+                            <option value="4">Opción 4</option>
+                        </select>
+                    </div>
+
+                    <!-- Textarea -->
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="textarea">Textarea</label>
+                        <textarea class="app-textarea" id="textarea" placeholder="Escribe un mensaje largo..."></textarea>
+                    </div>
+
+                    <!-- Checkbox -->
+                    <div class="app-form-group">
+                        <label class="app-checkbox-wrapper">
+                            <input type="checkbox" class="app-checkbox">
+                            <span class="app-checkbox-label">Acepto los términos y condiciones</span>
+                        </label>
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-checkbox-wrapper">
+                            <input type="checkbox" class="app-checkbox" checked>
+                            <span class="app-checkbox-label">Suscribirme al newsletter</span>
+                        </label>
+                    </div>
+
+                    <!-- Radio Buttons -->
+                    <div class="app-form-group">
+                        <label class="app-form-label">Plan de suscripción</label>
+                        
+                        <label class="app-radio-wrapper">
+                            <input type="radio" class="app-radio" name="plan" value="basic">
+                            <span class="app-radio-label">Plan Básico - $9/mes</span>
+                        </label>
+
+                        <label class="app-radio-wrapper">
+                            <input type="radio" class="app-radio" name="plan" value="pro" checked>
+                            <span class="app-radio-label">Plan Pro - $29/mes</span>
+                        </label>
+
+                        <label class="app-radio-wrapper">
+                            <input type="radio" class="app-radio" name="plan" value="enterprise">
+                            <span class="app-radio-label">Plan Enterprise - $99/mes</span>
+                        </label>
+                    </div>
+
+                    <!-- Switch / Toggle -->
+                    <div class="app-form-group">
+                        <label class="app-switch-wrapper">
+                            <input type="checkbox" class="app-switch">
+                            <span class="app-switch-label">Habilitar notificaciones</span>
+                        </label>
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-switch-wrapper">
+                            <input type="checkbox" class="app-switch" checked>
+                            <span class="app-switch-label">Modo oscuro</span>
+                        </label>
+                    </div>
+
+                    <!-- Range Slider -->
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="range">Rango de precio: </label>
+                        <input type="range" class="app-range" id="range" min="0" max="1000" value="500" data-range-value>
+                    </div>
+
+                    <!-- Color Picker -->
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="color">Color favorito</label>
+                        <input type="color" class="app-color-input" id="color" value="#000000">
+                    </div>
+
+                    <!-- Date -->
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="date">Fecha</label>
+                        <input type="date" class="app-date-input" id="date">
+                    </div>
+
+                    <!-- Time -->
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="time">Hora</label>
+                        <input type="time" class="app-time-input" id="time">
+                    </div>
+
+                    <!-- DateTime -->
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="datetime">Fecha y hora</label>
+                        <input type="datetime-local" class="app-datetime-input" id="datetime">
+                    </div>
+
+                    <!-- File Input -->
+                    <div class="app-form-group">
+                        <label class="app-form-label">Subir archivo</label>
+                        <input type="file" class="app-file-input" id="file" accept=".pdf,.doc,.docx">
+                        <label for="file" class="app-file-label">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            Seleccionar archivo
+                        </label>
+                    </div>
+
+                    <!-- Input Group con Icono -->
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="search">Buscar</label>
+                        <div class="app-input-group">
+                            <span class="app-input-group__prepend">
+                                <svg class="app-input-group__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.35-4.35"></path>
+                                </svg>
+                            </span>
+                            <input type="text" class="app-input" id="search" placeholder="Buscar...">
+                        </div>
+                    </div>
+
+                    <!-- Input Group con Botón -->
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="website">Sitio web</label>
+                        <div class="app-input-group">
+                            <span class="app-input-group__prepend">https://</span>
+                            <input type="text" class="app-input" id="website" placeholder="ejemplo.com">
+                            <span class="app-input-group__append">.com</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- BOTÓN PARA MODAL REDIMENSIONABLE -->
+        <section class="form-section">
+            <h2 class="form-section__title">Modal Redimensionable</h2>
+            <p class="form-section__description">Modal con controles de tamaño en la esquina inferior izquierda</p>
+            
+            <div class="form-example">
+                <button class="app-btn app-btn--primary" data-modal-open="resizableModal">Abrir Modal Redimensionable</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- MODAL REDIMENSIONABLE -->
+    <div class="app-modal" id="resizableModal">
+        <div class="app-modal__dialog app-modal__dialog--resizable" style="width: 600px; height: 500px;">
+            <div class="app-modal__header">
+                <h3 class="app-modal__title">Formulario en Modal Redimensionable</h3>
+                <button class="app-close" data-modal-close>
+                    <svg class="app-close__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="app-modal__body">
+                <form class="app-form" data-validate>
+                    <div class="app-form-group">
+                        <label class="app-form-label app-form-label--required" for="modal-name">Nombre del proyecto</label>
+                        <input type="text" class="app-input" id="modal-name" required placeholder="Ingresa el nombre">
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-form-label app-form-label--required" for="modal-description">Descripción</label>
+                        <textarea class="app-textarea" id="modal-description" required maxlength="300" data-char-counter="300" placeholder="Describe tu proyecto..."></textarea>
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="modal-category">Categoría</label>
+                        <select class="app-select" id="modal-category">
+                            <option value="">Selecciona una categoría...</option>
+                            <option value="web">Desarrollo Web</option>
+                            <option value="mobile">Aplicación Móvil</option>
+                            <option value="desktop">Software de Escritorio</option>
+                            <option value="ai">Inteligencia Artificial</option>
+                        </select>
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="modal-tags">Tecnologías</label>
+                        <div class="app-tag-input" data-tag-input>
+                            <input type="text" class="app-tag-input__field" placeholder="Agrega tecnologías...">
+                        </div>
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-switch-wrapper">
+                            <input type="checkbox" class="app-switch">
+                            <span class="app-switch-label">Proyecto público</span>
+                        </label>
+                    </div>
+
+                    <div class="app-form-group">
+                        <label class="app-form-label" for="modal-deadline">Fecha límite</label>
+                        <input type="date" class="app-date-input" id="modal-deadline">
+                    </div>
+                </form>
+            </div>
+            <div class="app-modal__footer">
+                <button class="app-btn app-btn--secondary" data-modal-close>Cancelar</button>
+                <button class="app-btn app-btn--primary">Crear proyecto</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/base.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/forms.js"></script>
+</body>
+</html>

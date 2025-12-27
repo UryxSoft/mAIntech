@@ -1,0 +1,467 @@
+/*
+ * Hoja de Estilos: styles.css
+ * ----------------------------
+ * Estilos modulares, organizados por secciones.
+ */
+
+/* ==========================================================================
+   1. Variables CSS (Design Tokens)
+   ========================================================================== */
+
+:root {
+    /* Paleta de Colores */
+    --color-background-primary: #1A1C22;
+    --color-card-background: #21232B;
+    --color-text-primary: #D6D7DA;
+    --color-text-secondary: #6B6D7A;
+    --color-accent-red: #F2545F;
+    --color-accent-blue: #79B8F3;
+    --color-accent-pill: #79808C;
+    --color-divider: #363941;
+    --color-timeline-line: #363941;
+
+    /* Tipografía */
+    --font-family-base: 'Inter', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-semibold: 600;
+
+    /* Escala Tipográfica */
+    --font-size-sm: 0.8125rem; /* 13px */
+    --font-size-md: 1rem;      /* 16px */
+    --font-size-lg: 1.125rem;  /* 18px */
+    --font-size-xl: 1.25rem;   /* 20px */
+
+    /* Espaciado */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    /* Border Radius */
+    --border-radius-card: 16px;
+    --border-radius-pill: 6px;
+    --border-radius-icon: 8px;
+
+    /* Transiciones */
+    --transition-speed: 0.2s;
+    --transition-easing: ease-in-out;
+}
+
+/* ==========================================================================
+   2. Reset y Estilos Base
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-md);
+    color: var(--color-text-primary);
+    background-color: var(--color-background-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-xl);
+}
+
+a {
+    color: var(--color-accent-blue);
+    text-decoration: none;
+    transition: color var(--transition-speed) var(--transition-easing);
+}
+
+a:hover {
+    color: var(--color-text-primary);
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    padding: 0;
+}
+
+/* Foco de Accesibilidad */
+*:focus-visible {
+    outline: 2px solid var(--color-accent-blue);
+    outline-offset: 2px;
+}
+
+/* Iconos SVG */
+.icon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--color-text-secondary);
+}
+
+.icon-sm {
+    width: 14px;
+    height: 14px;
+    margin-right: var(--spacing-xs);
+    vertical-align: middle;
+}
+
+/* ==========================================================================
+   3. Layout (Estructura Principal)
+   ========================================================================== */
+
+.app-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr); /* Mobile-first: 1 columna */
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Sidebar Fija (Mock) */
+.sidebar-fixed {
+    display: none; /* Oculta en móvil y tablet, no es el foco */
+}
+
+.logo {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+}
+
+/* Main Content */
+.main-content {
+    padding: 0;
+}
+
+/* ==========================================================================
+   4. Componentes - Card Principal
+   ========================================================================== */
+
+.shipment-card {
+    background-color: var(--color-card-background);
+    border-radius: var(--border-radius-card);
+    padding: var(--spacing-xl);
+    width: 100%;
+    min-width: 350px;
+    /* Sombra sutil, solo si es necesario para el contraste */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+}
+
+/* Header de la Tarjeta */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-divider);
+}
+
+.user-name {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+}
+
+.user-role-pill {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    background-color: var(--color-accent-pill);
+    padding: 3px var(--spacing-sm);
+    border-radius: var(--border-radius-pill);
+    font-weight: var(--font-weight-regular);
+    margin-left: var(--spacing-sm);
+    opacity: 0.8;
+}
+
+.actions .icon-button {
+    margin-left: var(--spacing-sm);
+    padding: var(--spacing-xs);
+    border-radius: var(--border-radius-icon);
+    transition: background-color var(--transition-speed);
+}
+
+.actions .icon-button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.actions .icon {
+    stroke: var(--color-accent-blue);
+    width: 22px;
+    height: 22px;
+}
+
+/* Tarjetas de Resumen (Stats Grid) */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg) 0;
+    border-bottom: 1px solid var(--color-divider);
+}
+
+.stat-card {
+    background-color: rgba(255, 255, 255, 0.03); /* Fondo sutil para las celdas */
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-pill);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 70px; /* Para asegurar consistencia */
+}
+
+.stat-number {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.2;
+}
+
+.price-stat .stat-number {
+    color: var(--color-accent-red);
+}
+
+/* ==========================================================================
+   5. Componentes - Timeline (Línea de Tiempo)
+   ========================================================================== */
+
+.timeline {
+    padding-top: var(--spacing-xl);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: var(--spacing-xl); /* Espacio para la línea y el punto */
+    padding-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Línea vertical y punto (Timeline visual) */
+.timeline-item::before,
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+}
+
+/* El punto (dot) */
+.timeline-item::before {
+    top: 5px; /* Alinear con el texto del título */
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-accent-blue);
+    z-index: 2;
+    transform: translateX(40%); /* Centrar el punto en el padding-left */
+}
+
+/* La línea vertical (line) */
+.timeline-item:not(.timeline-last-item)::after {
+    top: 14px; /* Empieza debajo del punto */
+    bottom: -10px; /* Cubre el espacio vertical, un poco extra */
+    width: 2px;
+    background-color: var(--color-timeline-line);
+    z-index: 1;
+    transform: translateX(calc(40% + 3px)); /* Centrar la línea debajo del punto */
+}
+
+/* Ocultar la línea después del último elemento */
+.timeline-last-item::after {
+    display: none;
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+    cursor: pointer;
+}
+
+.timeline-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+}
+
+.dropdown-arrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--color-text-secondary);
+    transform: translateY(2px);
+    opacity: 0.6;
+}
+
+.timeline-content {
+    /* Por defecto abierto, añadir JS para toggle */
+}
+
+.timeline-detail-key {
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-primary);
+}
+
+.timeline-detail-value {
+    font-weight: var(--font-weight-regular);
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-primary);
+}
+
+.timeline-address {
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.timeline-note {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid var(--color-accent-blue);
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin: var(--spacing-sm) 0 var(--spacing-md) 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.contact-detail {
+    display: inline-flex;
+    align-items: center;
+}
+
+.carrier-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.action-date {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-text-primary);
+}
+
+.action-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-left: 20px; /* Alineación con el texto de la fecha */
+    margin-bottom: var(--spacing-sm);
+}
+
+.action-link {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    width: fit-content;
+}
+
+.action-link .icon {
+    stroke: var(--color-accent-blue);
+}
+
+.assign-driver {
+    color: var(--color-accent-blue);
+    margin-left: 4px; /* Ajuste visual */
+}
+.assign-driver .icon {
+    stroke-width: 3; /* Para que el '+' se vea más grueso */
+}
+
+
+/* ==========================================================================
+   6. Componentes - Sidebar Flotante
+   ========================================================================== */
+
+.sidebar-float {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background-color: var(--color-card-background);
+    border-radius: var(--border-radius-card);
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+}
+
+.float-button {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius-icon);
+    transition: background-color var(--transition-speed);
+}
+
+.float-button .icon {
+    stroke: var(--color-text-secondary);
+}
+
+.float-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.float-button.active {
+    background-color: rgba(255, 255, 255, 0.05);
+    position: relative;
+    /* Indicador vertical de estado activo */
+}
+
+.float-button.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 70%;
+    background-color: var(--color-accent-red);
+    border-radius: 3px;
+}
+
+.float-button.active .icon {
+    stroke: var(--color-text-primary);
+}
+
+
+/* ==========================================================================
+   7. Media Queries (Responsive)
+   ========================================================================== */
+
+/* Tablet (≥481px y ≤1024px) */
+@media (min-width: 481px) and (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas para tablet */
+    }
+}
+
+/* Desktop (>1024px) - Mantiene el diseño principal */
+@media (min-width: 1025px) {
+    /* La estructura base ya es desktop-friendly */
+}

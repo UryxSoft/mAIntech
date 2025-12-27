@@ -1,0 +1,784 @@
+/*
+ * forms.css
+ * Sistema de Formularios Inteligentes
+ * Modal Redimensionable
+ * ========================================================================
+ */
+
+/* ==========================================================================
+   FORM BASE STYLES
+   ========================================================================== */
+.app-form {
+    width: 100%;
+}
+
+.app-form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.app-form-label {
+    display: block;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    margin-bottom: 8px;
+    font-size: 0.9375rem;
+}
+
+.app-form-label--required::after {
+    content: ' *';
+    color: #ef4444;
+}
+
+.app-form-help {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin-top: 4px;
+}
+
+.app-form-error {
+    display: block;
+    font-size: 0.875rem;
+    color: #ef4444;
+    margin-top: 4px;
+}
+
+/* ==========================================================================
+   INPUT FIELDS
+   ========================================================================== */
+.app-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--color-divider);
+    border-radius: var(--border-radius-item);
+    background-color: var(--color-panel-bg);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-menu);
+    transition: all var(--transition-speed);
+}
+
+.app-input:focus {
+    outline: none;
+    border-color: var(--color-item-active-bg);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.app-input::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.6;
+}
+
+.app-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--color-action-button-bg);
+}
+
+.app-input--error {
+    border-color: #ef4444;
+}
+
+.app-input--success {
+    border-color: #22c55e;
+}
+
+/* Input Sizes */
+.app-input--sm {
+    padding: 8px 12px;
+    font-size: 0.875rem;
+}
+
+.app-input--lg {
+    padding: 16px 20px;
+    font-size: 1.125rem;
+}
+
+/* ==========================================================================
+   TEXTAREA
+   ========================================================================== */
+.app-textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--color-divider);
+    border-radius: var(--border-radius-item);
+    background-color: var(--color-panel-bg);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-menu);
+    resize: vertical;
+    min-height: 100px;
+    transition: all var(--transition-speed);
+}
+
+.app-textarea:focus {
+    outline: none;
+    border-color: var(--color-item-active-bg);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   SELECT
+   ========================================================================== */
+.app-select {
+    width: 100%;
+    padding: 12px 16px;
+    padding-right: 40px;
+    border: 1px solid var(--color-divider);
+    border-radius: var(--border-radius-item);
+    background-color: var(--color-panel-bg);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    color: var(--color-text-primary);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-menu);
+    cursor: pointer;
+    appearance: none;
+    transition: all var(--transition-speed);
+}
+
+.app-select:focus {
+    outline: none;
+    border-color: var(--color-item-active-bg);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.app-select--multiple {
+    padding: 8px;
+    height: auto;
+    background-image: none;
+}
+
+.app-select--multiple option {
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin: 2px 0;
+}
+
+/* ==========================================================================
+   CHECKBOX
+   ========================================================================== */
+.app-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.app-checkbox {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    margin-right: 12px;
+    cursor: pointer;
+    appearance: none;
+    border: 2px solid var(--color-divider);
+    border-radius: 6px;
+    background-color: var(--color-panel-bg);
+    position: relative;
+    transition: all var(--transition-speed);
+}
+
+.app-checkbox:checked {
+    background-color: var(--color-item-active-bg);
+    border-color: var(--color-item-active-bg);
+}
+
+.app-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.app-checkbox:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.app-checkbox-label {
+    font-size: 0.9375rem;
+    color: var(--color-text-primary);
+    user-select: none;
+}
+
+/* ==========================================================================
+   RADIO
+   ========================================================================== */
+.app-radio-wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.app-radio {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    margin-right: 12px;
+    cursor: pointer;
+    appearance: none;
+    border: 2px solid var(--color-divider);
+    border-radius: 50%;
+    background-color: var(--color-panel-bg);
+    position: relative;
+    transition: all var(--transition-speed);
+}
+
+.app-radio:checked {
+    border-color: var(--color-item-active-bg);
+}
+
+.app-radio:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color-item-active-bg);
+}
+
+.app-radio:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.app-radio-label {
+    font-size: 0.9375rem;
+    color: var(--color-text-primary);
+    user-select: none;
+}
+
+/* ==========================================================================
+   SWITCH / TOGGLE
+   ========================================================================== */
+.app-switch-wrapper {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.app-switch {
+    width: 48px;
+    height: 24px;
+    margin: 0;
+    margin-right: 12px;
+    cursor: pointer;
+    appearance: none;
+    border: 2px solid var(--color-divider);
+    border-radius: 50px;
+    background-color: var(--color-action-button-bg);
+    position: relative;
+    transition: all var(--transition-speed);
+}
+
+.app-switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    transition: all var(--transition-speed);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.app-switch:checked {
+    background-color: var(--color-item-active-bg);
+    border-color: var(--color-item-active-bg);
+}
+
+.app-switch:checked::after {
+    left: 26px;
+}
+
+.app-switch:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.app-switch-label {
+    font-size: 0.9375rem;
+    color: var(--color-text-primary);
+    user-select: none;
+}
+
+/* ==========================================================================
+   INPUT GROUP (con iconos, botones)
+   ========================================================================== */
+.app-input-group {
+    display: flex;
+    position: relative;
+}
+
+.app-input-group .app-input {
+    flex: 1;
+}
+
+.app-input-group__prepend,
+.app-input-group__append {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    background-color: var(--color-action-button-bg);
+    border: 1px solid var(--color-divider);
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+}
+
+.app-input-group__prepend {
+    border-right: none;
+    border-radius: var(--border-radius-item) 0 0 var(--border-radius-item);
+}
+
+.app-input-group__append {
+    border-left: none;
+    border-radius: 0 var(--border-radius-item) var(--border-radius-item) 0;
+}
+
+.app-input-group__prepend + .app-input {
+    border-left: none;
+    border-radius: 0 var(--border-radius-item) var(--border-radius-item) 0;
+}
+
+.app-input-group .app-input + .app-input-group__append {
+    border-left: none;
+}
+
+.app-input-group__icon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   FILE INPUT
+   ========================================================================== */
+.app-file-input {
+    display: none;
+}
+
+.app-file-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 12px 24px;
+    border: 2px dashed var(--color-divider);
+    border-radius: var(--border-radius-item);
+    background-color: var(--color-panel-bg);
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.app-file-label:hover {
+    border-color: var(--color-item-active-bg);
+    background-color: var(--color-item-hover-bg);
+}
+
+.app-file-preview {
+    margin-top: 12px;
+    padding: 12px;
+    background-color: var(--color-item-hover-bg);
+    border-radius: var(--border-radius-item);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   RANGE SLIDER
+   ========================================================================== */
+.app-range {
+    width: 100%;
+    height: 6px;
+    margin: 12px 0;
+    appearance: none;
+    background: var(--color-action-button-bg);
+    border-radius: 50px;
+    outline: none;
+}
+
+.app-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--color-item-active-bg);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all var(--transition-speed);
+}
+
+.app-range::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.app-range::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--color-item-active-bg);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.app-range-value {
+    display: block;
+    text-align: center;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    margin-top: 8px;
+}
+
+/* ==========================================================================
+   COLOR PICKER
+   ========================================================================== */
+.app-color-input {
+    width: 60px;
+    height: 40px;
+    padding: 4px;
+    border: 1px solid var(--color-divider);
+    border-radius: var(--border-radius-item);
+    background-color: var(--color-panel-bg);
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   DATE & TIME INPUTS
+   ========================================================================== */
+.app-date-input,
+.app-time-input,
+.app-datetime-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--color-divider);
+    border-radius: var(--border-radius-item);
+    background-color: var(--color-panel-bg);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-menu);
+    transition: all var(--transition-speed);
+}
+
+.app-date-input:focus,
+.app-time-input:focus,
+.app-datetime-input:focus {
+    outline: none;
+    border-color: var(--color-item-active-bg);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   FORM LAYOUTS
+   ========================================================================== */
+
+/* Inline Form */
+.app-form--inline {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.app-form--inline .app-form-group {
+    margin-bottom: 0;
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Grid Form */
+.app-form--grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+}
+
+/* Two Column Form */
+.app-form--two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+/* Full Width Field */
+.app-form-group--full {
+    grid-column: 1 / -1;
+}
+
+/* ==========================================================================
+   VALIDATION STATES
+   ========================================================================== */
+.app-form-group--error .app-input,
+.app-form-group--error .app-select,
+.app-form-group--error .app-textarea {
+    border-color: #ef4444;
+}
+
+.app-form-group--error .app-form-label {
+    color: #ef4444;
+}
+
+.app-form-group--success .app-input,
+.app-form-group--success .app-select,
+.app-form-group--success .app-textarea {
+    border-color: #22c55e;
+}
+
+.app-form-group--warning .app-input,
+.app-form-group--warning .app-select,
+.app-form-group--warning .app-textarea {
+    border-color: #f59e0b;
+}
+
+/* ==========================================================================
+   SMART FORM FEATURES
+   ========================================================================== */
+
+/* Auto-complete / Suggestions */
+.app-autocomplete {
+    position: relative;
+}
+
+.app-autocomplete__suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 4px;
+    background-color: var(--color-panel-bg);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--border-radius-item);
+    box-shadow: 0 4px 16px var(--color-shadow);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+}
+
+.app-autocomplete__suggestions--show {
+    display: block;
+}
+
+.app-autocomplete__item {
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+.app-autocomplete__item:hover,
+.app-autocomplete__item--active {
+    background-color: var(--color-item-hover-bg);
+}
+
+/* Tag Input */
+.app-tag-input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px;
+    border: 1px solid var(--color-divider);
+    border-radius: var(--border-radius-item);
+    background-color: var(--color-panel-bg);
+    min-height: 48px;
+}
+
+.app-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background-color: var(--color-item-active-bg);
+    color: var(--color-item-active-text);
+    border-radius: 6px;
+    font-size: 0.875rem;
+}
+
+.app-tag__remove {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity var(--transition-speed);
+}
+
+.app-tag__remove:hover {
+    opacity: 1;
+}
+
+.app-tag-input__field {
+    flex: 1;
+    min-width: 100px;
+    border: none;
+    background: none;
+    outline: none;
+    color: var(--color-text-primary);
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-menu);
+}
+
+/* Password Strength Meter */
+.app-password-strength {
+    margin-top: 8px;
+}
+
+.app-password-strength__bar {
+    height: 4px;
+    background-color: var(--color-action-button-bg);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.app-password-strength__fill {
+    height: 100%;
+    transition: all var(--transition-speed);
+    width: 0;
+}
+
+.app-password-strength__fill--weak {
+    width: 33%;
+    background-color: #ef4444;
+}
+
+.app-password-strength__fill--medium {
+    width: 66%;
+    background-color: #f59e0b;
+}
+
+.app-password-strength__fill--strong {
+    width: 100%;
+    background-color: #22c55e;
+}
+
+.app-password-strength__text {
+    font-size: 0.875rem;
+    margin-top: 4px;
+    color: var(--color-text-secondary);
+}
+
+/* Character Counter */
+.app-char-counter {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin-top: 4px;
+}
+
+.app-char-counter--limit {
+    color: #ef4444;
+}
+
+/* ==========================================================================
+   MODAL REDIMENSIONABLE
+   ========================================================================== */
+.app-modal__dialog--resizable {
+    resize: both;
+    overflow: auto;
+    min-width: 400px;
+    min-height: 300px;
+    position: relative;
+}
+
+.app-modal__resize-handle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    cursor: nwse-resize;
+    background-color: var(--color-action-button-bg);
+    border-radius: 0 var(--border-radius-item) 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition-speed);
+    z-index: 10;
+}
+
+.app-modal__resize-handle:hover {
+    background-color: var(--color-action-button-hover);
+}
+
+.app-modal__resize-handle::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23666666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Size presets for modal */
+.app-modal__size-controls {
+    position: absolute;
+    bottom: 12px;
+    left: 40px;
+    display: flex;
+    gap: 4px;
+    z-index: 10;
+}
+
+.app-modal__size-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background-color: var(--color-action-button-bg);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-speed);
+}
+
+.app-modal__size-btn:hover {
+    background-color: var(--color-action-button-hover);
+}
+
+.app-modal__size-btn svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+    .app-form--two-column {
+        grid-template-columns: 1fr;
+    }
+    
+    .app-form--inline {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .app-form--inline .app-form-group {
+        width: 100%;
+    }
+    
+    .app-modal__dialog--resizable {
+        resize: none;
+        width: 100% !important;
+        height: auto !important;
+    }
+}

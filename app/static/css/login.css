@@ -1,0 +1,308 @@
+/*
+ * Hoja de Estilos: styles.css
+ * Prefijo: maintech_login_
+ * ----------------------------
+ * Estilos modulares, organizados por secciones.
+ */
+
+/* ==========================================================================
+   1. Variables CSS (Design Tokens)
+   ========================================================================== */
+
+:root {
+    /* Paleta de Colores */
+    --color-background-primary: #1A1C22;
+    --color-card-background: #161616;
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #7A7A7A;
+    --color-button-default: #161616;
+    --color-button-border: #4A4A4A;
+    --color-button-hover: #333333;
+    --color-icon-primary: #FFFFFF;
+
+    /* Tipografía */
+    --font-family-base: 'Inter', sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+
+    /* Escala Tipográfica */
+    --font-size-legal: 0.75rem; /* 12px */
+    --font-size-button: 1rem;    /* 16px */
+    --font-size-logo: 1.5rem;    /* 24px */
+    --font-size-title: 2.5rem;   /* 40px */
+
+    /* Espaciado */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 48px;
+    --spacing-xxxl: 64px;
+
+    /* Border Radius */
+    --border-radius-container: 24px;
+    --border-radius-button: 12px;
+
+    /* Transiciones */
+    --transition-speed: 0.3s;
+    --transition-easing: ease-in-out;
+}
+
+/* ==========================================================================
+   2. Reset y Estilos Base
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-button);
+    color: var(--color-text-primary);
+    background-color: var(--color-background-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-lg); /* Padding para que el contenedor no pegue en el borde */
+}
+
+a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+.maintech_login_link:hover {
+    color: var(--color-text-primary);
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    padding: 0;
+}
+
+/* Foco de Accesibilidad */
+*:focus-visible {
+    outline: 2px solid var(--color-text-primary);
+    outline-offset: 2px;
+    border-radius: var(--border-radius-button);
+}
+
+/* ==========================================================================
+   3. Layout (Estructura Principal)
+   ========================================================================== */
+
+.maintech_login_container {
+    display: flex;
+    max-width: 1200px; /* Ancho máximo simulado */
+    width: 95%;
+    height: 90vh; /* Altura para centrar el contenido */
+    min-height: 600px;
+    border-radius: var(--border-radius-container);
+    overflow: hidden; /* Para contener la imagen y sus bordes */
+    background-color: var(--color-card-background); /* Color base */
+}
+
+/* Panel de Imagen (Izquierda) */
+.maintech_login_image-panel {
+    flex: 1;
+    background-image: url('assets/images/maintech_login_image-bg.jpg'); /* Mock Image */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Efecto de viñeta/desvanecimiento en la imagen */
+.maintech_login_image-panel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 30%, var(--color-background-primary) 95%);
+    pointer-events: none;
+}
+
+/* Panel de Contenido (Derecha) */
+.maintech_login_content-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--spacing-xxxl) var(--spacing-xxl);
+    position: relative; /* Para la burbuja de chat */
+}
+
+/* Ocultar la imagen en móvil */
+@media (max-width: 1024px) {
+    .maintech_login_image-panel {
+        display: none;
+    }
+    .maintech_login_content-panel {
+        width: 100%;
+        flex: none;
+        padding: var(--spacing-xl);
+    }
+    .maintech_login_container {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        border-radius: 0;
+        background-color: var(--color-background-primary);
+    }
+}
+
+/* ==========================================================================
+   4. Componentes - Panel Izquierdo
+   ========================================================================== */
+
+.maintech_login_header {
+    z-index: 10;
+}
+
+.maintech_login_logo {
+    font-size: var(--font-size-logo);
+    font-weight: var(--font-weight-semibold);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-button);
+    display: inline-block;
+    backdrop-filter: blur(5px); /* Efecto de cristal sutil */
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.maintech_login_image-info {
+    z-index: 10;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.maintech_login_legal-caption {
+    font-size: var(--font-size-legal);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* ==========================================================================
+   5. Componentes - Panel Derecho
+   ========================================================================== */
+
+.maintech_login_title {
+    font-size: var(--font-size-title);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-xxl);
+    line-height: 1.2;
+}
+
+.maintech_login_auth-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xxl);
+}
+
+.maintech_login_button {
+    height: 56px;
+    padding: 0 var(--spacing-xl);
+    border-radius: var(--border-radius-button);
+    background-color: var(--color-button-default);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-button);
+    font-weight: var(--font-weight-medium);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid var(--color-button-border);
+    transition: background-color var(--transition-speed), border-color var(--transition-speed);
+}
+
+.maintech_login_button:hover {
+    background-color: var(--color-button-hover);
+    border-color: var(--color-text-secondary);
+}
+
+.maintech_login_icon {
+    width: 20px;
+    height: 20px;
+    margin-right: var(--spacing-md);
+}
+
+.maintech_login_icon-space {
+    flex-grow: 1; /* Espacio para alinear iconos al final */
+}
+
+/* Botón de Email - Estilos específicos */
+.maintech_login_button--email {
+    justify-content: space-between;
+    padding-right: var(--spacing-md); /* Ajuste para que la flecha no toque el borde */
+}
+
+/* Icono de Email (sobrescribe el stroke predeterminado) */
+.maintech_login_button--email .maintech_login_icon {
+    stroke: var(--color-icon-primary);
+}
+
+/* Flecha al final del botón Email */
+.maintech_login_arrow {
+    width: 20px;
+    height: 20px;
+    stroke: var(--color-icon-primary);
+    transition: transform var(--transition-speed) var(--transition-easing);
+}
+
+/* Interacción: Mover la flecha en hover */
+.maintech_login_button--email:hover .maintech_login_arrow {
+    transform: translateX(4px);
+}
+
+/* Texto Legal */
+.maintech_login_legal-text {
+    font-size: var(--font-size-legal);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.maintech_login_legal-text p {
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Burbuja de Chat (Hi!) */
+.maintech_login_chat-bubble {
+    position: absolute;
+    bottom: var(--spacing-xxxl);
+    right: var(--spacing-xxl);
+    background-color: var(--color-button-default);
+    border: 1px solid var(--color-button-border);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-container) var(--border-radius-container) var(--spacing-xs) var(--border-radius-container);
+    font-size: var(--font-size-button);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+/* Ajuste de posición de la burbuja para móvil */
+@media (max-width: 1024px) {
+    .maintech_login_chat-bubble {
+        bottom: var(--spacing-xl);
+        right: var(--spacing-xl);
+    }
+    .maintech_login_title {
+        font-size: 2rem;
+        margin-top: var(--spacing-xxl); /* Separar del borde superior en móvil */
+    }
+}

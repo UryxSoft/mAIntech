@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Componentes - Ejemplos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        .components-showcase {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .component-section {
+            margin-bottom: 80px;
+        }
+        
+        .component-section__title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--color-text-primary);
+            border-bottom: 2px solid var(--color-divider);
+            padding-bottom: 12px;
+        }
+        
+        .component-section__description {
+            color: var(--color-text-secondary);
+            margin-bottom: 32px;
+        }
+        
+        .component-example {
+            background-color: var(--color-panel-bg);
+            padding: 32px;
+            border-radius: var(--border-radius-item);
+            margin-bottom: 16px;
+        }
+        
+        .component-example__title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--color-text-primary);
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    
+    <div class="components-showcase">
+        <h1 style="font-size: 3rem; margin-bottom: 16px; color: var(--color-text-primary);">Sistema de Componentes</h1>
+        <p style="font-size: 1.25rem; color: var(--color-text-secondary); margin-bottom: 48px;">Componentes profesionales y responsivos basados en el diseño app-</p>
+
+        <!-- ACCORDION -->
+        <section class="component-section">
+            <h2 class="component-section__title">Accordion</h2>
+            <p class="component-section__description">Secciones colapsables para organizar contenido</p>
+            
+            <div class="component-example">
+                <div class="app-accordion">
+                    <div class="app-accordion__item">
+                        <button class="app-accordion__header">
+                            <span>¿Qué es un accordion?</span>
+                            <svg class="app-accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="app-accordion__content">
+                            <div class="app-accordion__content-inner">
+                                Un accordion es un componente que permite mostrar y ocultar contenido de forma vertical.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="app-accordion__item">
+                        <button class="app-accordion__header">
+                            <span>¿Cómo se usa?</span>
+                            <svg class="app-accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="app-accordion__content">
+                            <div class="app-accordion__content-inner">
+                                Simplemente haz clic en el encabezado para expandir o contraer el contenido.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="app-accordion__item">
+                        <button class="app-accordion__header">
+                            <span>¿Es responsive?</span>
+                            <svg class="app-accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="app-accordion__content">
+                            <div class="app-accordion__content-inner">
+                                Sí, todos los componentes están diseñados para ser completamente responsivos.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ALERTS -->
+        <section class="component-section">
+            <h2 class="component-section__title">Alerts</h2>
+            <p class="component-section__description">Mensajes de notificación con diferentes estados</p>
+            
+            <div class="component-example">
+                <div class="app-alert app-alert--success">
+                    <svg class="app-alert__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <div class="app-alert__content">
+                        <div class="app-alert__title">¡Operación exitosa!</div>
+                        <div class="app-alert__message">Los cambios se han guardado correctamente.</div>
+                    </div>
+                    <button class="app-alert__close">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="app-alert app-alert--info">
+                    <svg class="app-alert__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    <div class="app-alert__content">
+                        <div class="app-alert__title">Información</div>
+                        <div class="app-alert__message">Hay una actualización disponible para tu cuenta.</div>
+                    </div>
+                    <button class="app-alert__close">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="app-alert app-alert--warning">
+                    <svg class="app-alert__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    <div class="app-alert__content">
+                        <div class="app-alert__title">Advertencia</div>
+                        <div class="app-alert__message">Tu suscripción expira en 3 días.</div>
+                    </div>
+                    <button class="app-alert__close">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="app-alert app-alert--danger">
+                    <svg class="app-alert__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="15" y1="9" x2="9" y2="15"></line>
+                        <line x1="9" y1="9" x2="15" y2="15"></line>
+                    </svg>
+                    <div class="app-alert__content">
+                        <div class="app-alert__title">Error</div>
+                        <div class="app-alert__message">No se pudo completar la operación. Intenta nuevamente.</div>
+                    </div>
+                    <button class="app-alert__close">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BADGES -->
+        <section class="component-section">
+            <h2 class="component-section__title">Badges</h2>
+            <p class="component-section__description">Etiquetas pequeñas para mostrar contadores o estados</p>
+            
+            <div class="component-example">
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                    <span class="app-badge app-badge--primary">Primary</span>
+                    <span class="app-badge app-badge--secondary">Secondary</span>
+                    <span class="app-badge app-badge--success">Success</span>
+                    <span class="app-badge app-badge--danger">Danger</span>
+                    <span class="app-badge app-badge--warning">Warning</span>
+                    <span class="app-badge app-badge--info">Info</span>
+                </div>
+                
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 16px;">
+                    <span class="app-badge app-badge--primary app-badge--pill">Pill Badge</span>
+                    <span class="app-badge app-badge--success app-badge--pill">99+</span>
+                    <span class="app-badge app-badge--danger app-badge--dot"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- BREADCRUMB -->
+        <section class="component-section">
+            <h2 class="component-section__title">Breadcrumb</h2>
+            <p class="component-section__description">Navegación para mostrar la ubicación actual</p>
+            
+            <div class="component-example">
+                <nav>
+                    <ul class="app-breadcrumb">
+                        <li class="app-breadcrumb__item">
+                            <a href="#" class="app-breadcrumb__link">Home</a>
+                        </li>
+                        <li class="app-breadcrumb__item">
+                            <a href="#" class="app-breadcrumb__link">Library</a>
+                        </li>
+                        <li class="app-breadcrumb__item">
+                            <a href="#" class="app-breadcrumb__link">Data</a>
+                        </li>
+                        <li class="app-breadcrumb__item app-breadcrumb__item--active">
+                            Bootstrap
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <!-- BUTTONS -->
+        <section class="component-section">
+            <h2 class="component-section__title">Buttons</h2>
+            <p class="component-section__description">Botones con múltiples variantes y tamaños</p>
+            
+            <div class="component-example">
+                <h3 class="component-example__title">Variantes</h3>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <button class="app-btn app-btn--primary">Primary</button>
+                    <button class="app-btn app-btn--secondary">Secondary</button>
+                    <button class="app-btn app-btn--outline">Outline</button>
+                    <button class="app-btn app-btn--ghost">Ghost</button>
+                    <button class="app-btn app-btn--success">Success</button>
+                    <button class="app-btn app-btn--danger">Danger</button>
+                    <button class="app-btn app-btn--primary" disabled>Disabled</button>
+                </div>
+            </div>
+
+            <div class="component-example">
+                <h3 class="component-example__title">Tamaños</h3>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                    <button class="app-btn app-btn--primary app-btn--sm">Small</button>
+                    <button class="app-btn app-btn--primary">Medium</button>
+                    <button class="app-btn app-btn--primary app-btn--lg">Large</button>
+                </div>
+            </div>
+
+            <div class="component-example">
+                <h3 class="component-example__title">Con Iconos</h3>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <button class="app-btn app-btn--primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        Agregar
+                    </button>
+                    <button class="app-btn app-btn--icon app-btn--secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BUTTON GROUP -->
+        <section class="component-section">
+            <h2 class="component-section__title">Button Group</h2>
+            <p class="component-section__description">Grupos de botones conectados</p>
+            
+            <div class="component-example">
+                <div class="app-btn-group">
+                    <button class="app-btn app-btn--secondary">Left</button>
+                    <button class="app-btn app-btn--secondary">Middle</button>
+                    <button class="app-btn app-btn--secondary">Right</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARDS -->
+        <section class="component-section">
+            <h2 class="component-section__title">Cards</h2>
+            <p class="component-section__description">Contenedores flexibles para contenido</p>
+            
+            <div class="component-example">
+                <div class="demo-grid">
+                    <div class="app-card">
+                        <div class="app-card__header">
+                            <h3 class="app-card__title">Card Title</h3>
+                            <p class="app-card__subtitle">Card subtitle</p>
+                        </div>
+                        <div class="app-card__body">
+                            <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        <div class="app-card__footer">
+                            <button class="app-btn app-btn--secondary app-btn--sm">Cancel</button>
+                            <button class="app-btn app-btn--primary app-btn--sm">Save</button>
+                        </div>
+                    </div>
+
+                    <div class="app-card app-card--interactive">
+                        <div class="app-card__body">
+                            <h3 class="app-card__title" style="margin-bottom: 8px;">Interactive Card</h3>
+                            <p style="color: var(--color-text-secondary);">Hover para ver el efecto de elevación</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAROUSEL -->
+        <section class="component-section">
+            <h2 class="component-section__title">Carousel</h2>
+            <p class="component-section__description">Carrusel de imágenes o contenido</p>
+            
+            <div class="component-example">
+                <div class="app-carousel">
+                    <div class="app-carousel__inner">
+                        <div class="app-carousel__item" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <h3 style="color: white; font-size: 2rem;">Slide 1</h3>
+                        </div>
+                        <div class="app-carousel__item" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <h3 style="color: white; font-size: 2rem;">Slide 2</h3>
+                        </div>
+                        <div class="app-carousel__item" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <h3 style="color: white; font-size: 2rem;">Slide 3</h3>
+                        </div>
+                    </div>
+                    
+                    <button class="app-carousel__btn app-carousel__btn--prev">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    
+                    <button class="app-carousel__btn app-carousel__btn--next">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                    
+                    <div class="app-carousel__controls">
+                        <div class="app-carousel__indicator app-carousel__indicator--active"></div>
+                        <div class="app-carousel__indicator"></div>
+                        <div class="app-carousel__indicator"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DROPDOWN -->
+        <section class="component-section">
+            <h2 class="component-section__title">Dropdown</h2>
+            <p class="component-section__description">Menús desplegables</p>
+            
+            <div class="component-example">
+                <div class="app-dropdown">
+                    <button class="app-dropdown__toggle app-btn app-btn--secondary">
+                        Dropdown
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="app-dropdown__menu">
+                        <div class="app-dropdown__header">Header</div>
+                        <a href="#" class="app-dropdown__item app-dropdown__item--active">Action</a>
+                        <a href="#" class="app-dropdown__item">Another action</a>
+                        <div class="app-dropdown__divider"></div>
+                        <a href="#" class="app-dropdown__item">Separated link</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIST GROUP -->
+        <section class="component-section">
+            <h2 class="component-section__title">List Group</h2>
+            <p class="component-section__description">Listas de contenido</p>
+            
+            <div class="component-example">
+                <ul class="app-list-group" style="max-width: 400px;">
+                    <li class="app-list-group__item app-list-group__item--active">Item activo</li>
+                    <li class="app-list-group__item">Segundo item</li>
+                    <li class="app-list-group__item">Tercer item</li>
+                    <li class="app-list-group__item">Cuarto item</li>
+                    <li class="app-list-group__item app-list-group__item--disabled">Item deshabilitado</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- MODAL -->
+        <section class="component-section">
+            <h2 class="component-section__title">Modal</h2>
+            <p class="component-section__description">Ventanas emergentes</p>
+            
+            <div class="component-example">
+                <button class="app-btn app-btn--primary" data-modal-open="demoModal">Abrir Modal</button>
+            </div>
+        </section>
+
+        <!-- NAVS AND TABS -->
+        <section class="component-section">
+            <h2 class="component-section__title">Navs & Tabs</h2>
+            <p class="component-section__description">Navegación por pestañas</p>
+            
+            <div class="component-example">
+                <h3 class="component-example__title">Tabs</h3>
+                <ul class="app-nav-tabs">
+                    <li data-tab-target="tab1" class="app-nav-tabs__item app-nav-tabs__item--active">Home</li>
+                    <li data-tab-target="tab2" class="app-nav-tabs__item">Profile</li>
+                    <li data-tab-target="tab3" class="app-nav-tabs__item">Contact</li>
+                </ul>
+                
+                <div class="app-tab-content" data-tab-content>
+                    <div id="tab1" class="app-tab-pane app-tab-pane--active">
+                        <p>Contenido de Home. Este es el contenido de la primera pestaña.</p>
+                    </div>
+                    <div id="tab2" class="app-tab-pane">
+                        <p>Contenido de Profile. Este es el contenido de la segunda pestaña.</p>
+                    </div>
+                    <div id="tab3" class="app-tab-pane">
+                        <p>Contenido de Contact. Este es el contenido de la tercera pestaña.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component-example">
+                <h3 class="component-example__title">Pills</h3>
+                <ul class="app-nav-pills">
+                    <li class="app-nav-pills__item app-nav-pills__item--active">Active</li>
+                    <li class="app-nav-pills__item">Link</li>
+                    <li class="app-nav-pills__item">Link</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- OFFCANVAS -->
+        <section class="component-section">
+            <h2 class="component-section__title">Offcanvas</h2>
+            <p class="component-section__description">Panel lateral deslizante</p>
+            
+            <div class="component-example">
+                <button class="app-btn app-btn--primary" data-offcanvas-open="demoOffcanvas">Abrir Offcanvas</button>
+            </div>
+        </section>
+
+        <!-- PAGINATION -->
+        <section class="component-section">
+            <h2 class="component-section__title">Pagination</h2>
+            <p class="component-section__description">Navegación entre páginas</p>
+            
+            <div class="component-example">
+                <nav>
+                    <ul class="app-pagination">
+                        <li class="app-pagination__item app-pagination__item--disabled">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </li>
+                        <li class="app-pagination__item app-pagination__item--active">1</li>
+                        <li class="app-pagination__item">2</li>
+                        <li class="app-pagination__item">3</li>
+                        <li class="app-pagination__item">4</li>
+                        <li class="app-pagination__item">5</li>
+                        <li class="app-pagination__item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <!-- PLACEHOLDERS -->
+        <section class="component-section">
+            <h2 class="component-section__title">Placeholders</h2>
+            <p class="component-section__description">Skeletons de carga</p>
+            
+            <div class="component-example">
+                <div class="app-card" style="max-width: 400px;">
+                    <div class="app-card__body">
+                        <div class="app-placeholder app-placeholder--title"></div>
+                        <div class="app-placeholder app-placeholder--text"></div>
+                        <div class="app-placeholder app-placeholder--text"></div>
+                        <div class="app-placeholder app-placeholder--text" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROGRESS -->
+        <section class="component-section">
+            <h2 class="component-section__title">Progress</h2>
+            <p class="component-section__description">Barras de progreso</p>
+            
+            <div class="component-example">
+                <div class="app-progress">
+                    <div class="app-progress__bar" style="width: 25%;"></div>
+                </div>
+                <br>
+                <div class="app-progress">
+                    <div class="app-progress__bar app-progress__bar--success" style="width: 50%;"></div>
+                </div>
+                <br>
+                <div class="app-progress">
+                    <div class="app-progress__bar app-progress__bar--warning" style="width: 75%;"></div>
+                </div>
+                <br>
+                <div class="app-progress">
+                    <div class="app-progress__bar app-progress__bar--danger app-progress__bar--striped" style="width: 100%;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPINNERS -->
+        <section class="component-section">
+            <h2 class="component-section__title">Spinners</h2>
+            <p class="component-section__description">Indicadores de carga</p>
+            
+            <div class="component-example">
+                <div style="display: flex; gap: 24px; align-items: center;">
+                    <div class="app-spinner app-spinner--sm"></div>
+                    <div class="app-spinner"></div>
+                    <div class="app-spinner app-spinner--lg"></div>
+                    <div class="app-spinner app-spinner--grow"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOASTS -->
+        <section class="component-section">
+            <h2 class="component-section__title">Toasts</h2>
+            <p class="component-section__description">Notificaciones temporales</p>
+            
+            <div class="component-example">
+                <button class="app-btn app-btn--primary" onclick="AppComponents.showToast({title: 'Éxito', message: 'Operación completada', type: 'success'})">
+                    Mostrar Toast Success
+                </button>
+                <button class="app-btn app-btn--secondary" onclick="AppComponents.showToast({title: 'Info', message: 'Información importante', type: 'info'})">
+                    Mostrar Toast Info
+                </button>
+                <button class="app-btn app-btn--outline" onclick="AppComponents.showToast({title: 'Advertencia', message: 'Ten cuidado', type: 'warning'})">
+                    Mostrar Toast Warning
+                </button>
+            </div>
+        </section>
+
+        <!-- TOOLTIPS -->
+        <section class="component-section">
+            <h2 class="component-section__title">Tooltips</h2>
+            <p class="component-section__description">Información emergente al pasar el cursor</p>
+            
+            <div class="component-example">
+                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                    <button class="app-btn app-btn--secondary" data-tooltip="Tooltip en top" data-tooltip-position="top">Top</button>
+                    <button class="app-btn app-btn--secondary" data-tooltip="Tooltip en bottom" data-tooltip-position="bottom">Bottom</button>
+                    <button class="app-btn app-btn--secondary" data-tooltip="Tooltip en left" data-tooltip-position="left">Left</button>
+                    <button class="app-btn app-btn--secondary" data-tooltip="Tooltip en right" data-tooltip-position="right">Right</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal Demo -->
+    <div class="app-modal" id="demoModal">
+        <div class="app-modal__dialog">
+            <div class="app-modal__header">
+                <h3 class="app-modal__title">Modal Title</h3>
+                <button class="app-close" data-modal-close>
+                    <svg class="app-close__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="app-modal__body">
+                <p>Este es un modal de ejemplo. Puedes poner cualquier contenido aquí.</p>
+                <p>El modal es completamente responsive y se adapta a diferentes tamaños de pantalla.</p>
+            </div>
+            <div class="app-modal__footer">
+                <button class="app-btn app-btn--secondary" data-modal-close>Cerrar</button>
+                <button class="app-btn app-btn--primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offcanvas Demo -->
+    <div class="app-offcanvas" id="demoOffcanvas">
+        <div class="app-offcanvas__header">
+            <h3 class="app-offcanvas__title">Offcanvas</h3>
+            <button class="app-close" data-offcanvas-close>
+                <svg class="app-close__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="app-offcanvas__body">
+            <p>Este es un panel offcanvas que se desliza desde el lateral.</p>
+            <p>Perfecto para menús de navegación o filtros.</p>
+            
+            <div class="app-list-group" style="margin-top: 24px;">
+                <a href="#" class="app-list-group__item">Opción 1</a>
+                <a href="#" class="app-list-group__item">Opción 2</a>
+                <a href="#" class="app-list-group__item">Opción 3</a>
+                <a href="#" class="app-list-group__item">Opción 4</a>
+            </div>
+        </div>
+    </div>
+    <div class="app-offcanvas-backdrop" id="demoOffcanvas-backdrop"></div>
+
+    <script src="js/base.js"></script>
+    <script src="js/components.js"></script>
+</body>
+</html>
