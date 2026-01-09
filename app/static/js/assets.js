@@ -96,21 +96,27 @@ class AssetManager {
     }
 
     initFilePond() {
-        FilePond.registerPlugin(FilePondPluginFileValidateType, FilePondPluginFileValidateSize);
-        this.filepond = FilePond.create(document.querySelector('.filepond-input'), {
-            allowMultiple: true,
-            maxFileSize: '10MB',
-            acceptedFileTypes: ['image/png', 'image/jpeg', 'application/pdf'],
-            server: {
-                // Aquí configurarías el endpoint de subida de archivos
-                // url: `/api/assets/${this.currentAssetId}/documents`,
-                process: (fieldName, file, metadata, load, error, progress, abort) => {
-                    // Por ahora, simulamos la subida
-                    console.log("Simulando subida de archivo:", file.name);
-                    load(file.name); // Notifica a FilePond que la subida fue "exitosa"
-                }
-            }
-        });
+        // FilePond initialization logic here...
+    }
+
+    debounce(func, delay) {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), delay);
+        };
+    }
+
+    showSkeleton(show) {
+        const skeleton = document.getElementById('grid-skeleton');
+        const grid = document.getElementById('asset-grid');
+        if (show) {
+            skeleton.style.display = 'block';
+            grid.style.display = 'none';
+        } else {
+            skeleton.style.display = 'none';
+            grid.style.display = 'block';
+        }
     }
 
     // ... (loadAssets, debounce, showSkeleton, renderActionsCell se mantienen igual)

@@ -1,0 +1,20 @@
+{% extends "main_.html" %}
+
+{% block title %}Mantenimiento{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <header class="page-header">
+        <h1>Gestión de Mantenimiento</h1>
+        <div class="actions">
+            <button id="btn-report-fault" class="btn btn-danger">
+                <i class="icon-plus"></i> Reportar Falla
+            </button>
+        </div>
+    </header>
+
+    <p>Aquí se mostrará la lista de órdenes de trabajo.</p>
+</div>
+
+{% include 'maintenance/corrective/report_modal.html' %}
+{% endblock %}

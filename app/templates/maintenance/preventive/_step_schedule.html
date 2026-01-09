@@ -1,0 +1,45 @@
+<div class="wizard-step-content">
+    <h3>Paso 2: Programación y Frecuencia</h3>
+    <p>Define con qué frecuencia debe ejecutarse este mantenimiento.</p>
+
+    <div class="form-group">
+        <label>Tipo de Programación:</label>
+        <div class="radio-group">
+            <input type="radio" id="schedule-type-time" name="schedule_type" value="time" checked>
+            <label for="schedule-type-time">Por Tiempo</label>
+            <input type="radio" id="schedule-type-usage" name="schedule_type" value="usage">
+            <label for="schedule-type-usage">Por Uso</label>
+        </div>
+    </div>
+
+    <!-- Panel de Programación por TIEMPO -->
+    <div id="time-based-panel" class="schedule-panel">
+        <div class="form-group">
+            <label for="interval_time">Frecuencia</label>
+            <select id="interval_time" name="interval_time" class="form-select">
+                <option value="daily">Diario</option>
+                <option value="weekly">Semanal</option>
+                <option value="monthly">Mensual</option>
+                <option value="annual">Anual</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Panel de Programación por USO -->
+    <div id="usage-based-panel" class="schedule-panel" style="display: none;">
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="interval_usage">Cada (valor)</label>
+                <input type="number" id="interval_usage" name="interval_usage" class="form-control" placeholder="Ej: 100">
+            </div>
+            <div class="form-group">
+                <label for="usage_unit">Unidad</label>
+                <select id="usage_unit" name="usage_unit" class="form-select">
+                    <option value="hours">Horas de operación</option>
+                    <option value="km">Kilómetros</option>
+                    <option value="cycles">Ciclos de producción</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="user-id" content="1"> <!-- User ID simulado -->
     <title>{% block title %}mAIntech CMMS{% endblock %}</title>
 
-    <!-- Estilos de TOAST UI -->
+    <!-- Dependencias de Estilos -->
     <link rel="stylesheet" href="https://uicdn.toast.com/grid/latest/tui-grid.min.css" />
-
-    <!-- Estilos de FilePond -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.css" />
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
 
-    <!-- Estilos de la aplicación -->
+    <!-- Estilos de la Aplicación -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets.css') }}">
-
     {% block styles %}{% endblock %}
 </head>
 <body>
@@ -25,9 +23,8 @@
             <nav>
                 <ul>
                     <li><a href="#">Dashboard</a></li>
-                    <li class="active"><a href="{{ url_for('assets.list_page') }}">Activos</a></li>
-                    <li><a href="#">Órdenes de Trabajo</a></li>
-                    <li><a href="#">Inventario</a></li>
+                    <li><a href="{{ url_for('assets.list_page') }}">Activos</a></li>
+                    <li><a href="{{ url_for('maintenance.index') }}">Mantenimiento</a></li>
                 </ul>
             </nav>
         </aside>
@@ -36,17 +33,14 @@
         </main>
     </div>
 
-    <!-- Librerías JS -->
+    <!-- Dependencias de JavaScript -->
     <script src="https://uicdn.toast.com/grid/latest/tui-grid.min.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+    <script src="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.js"></script>
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
-    <!-- Scripts de la aplicación -->
+    <!-- Scripts de la Aplicación -->
     <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/assets.js') }}"></script>
-
     {% block scripts %}{% endblock %}
 </body>
 </html>

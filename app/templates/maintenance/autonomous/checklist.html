@@ -1,0 +1,40 @@
+{% extends "main_.html" %}
+
+{% block title %}Checklist de Mantenimiento Autónomo{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <header class="page-header">
+        <h1>Checklist de Inicio de Turno: Prensa Hidráulica #PH-01</h1>
+    </header>
+
+    <div class="card">
+        <div class="card-body">
+            <div id="checklist-container">
+                <div class="checklist-item" data-task-id="1">
+                    <div class="task-description">1. Inspección visual de fugas de aceite.</div>
+                    <div class="task-actions">
+                        <button class="btn-check" data-status="ok">OK</button>
+                        <button class="btn-check" data-status="nok">Anomalía</button>
+                    </div>
+                </div>
+                <div class="checklist-item" data-task-id="2">
+                    <div class="task-description">2. Limpieza de la zona de trabajo.</div>
+                    <div class="task-actions">
+                        <button class="btn-check" data-status="ok">OK</button>
+                        <button class="btn-check" data-status="nok">Anomalía</button>
+                    </div>
+                </div>
+                <!-- Más tareas aquí -->
+            </div>
+            <div class="form-group" style="margin-top: 2rem;">
+                <label for="checklist-notes">Notas Adicionales</label>
+                <textarea id="checklist-notes" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button id="btn-submit-checklist" class="btn btn-primary">Finalizar Checklist</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

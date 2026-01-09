@@ -256,6 +256,21 @@ class WorkOrder(db.Model):
     checklists = db.relationship('Checklist', backref='work_order', lazy=True)
     permits = db.relationship('Permit', backref='work_order', lazy=True)
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'asset_id': self.asset_id,
+            'asset_name': self.asset.name if self.asset else None,
+            'type': self.type.name if self.type else None,
+            'priority': self.priority.name if self.priority else None,
+            'status': self.status.name if self.status else None,
+            'description': self.description,
+            'created_by_user_id': self.created_by_user_id,
+            'assigned_to_user_id': self.assigned_to_user_id,
+            'start_date': self.start_date.isoformat() if self.start_date else None,
+            'end_date': self.end_date.isoformat() if self.end_date else None,
+        }
+
 class Checklist(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
@@ -291,6 +306,20 @@ class PreventiveSchedule(db.Model):
     usage_unit = db.Column(db.Enum(PreventiveUsageUnit))
     last_executed = db.Column(db.Date)
     next_due = db.Column(db.Date)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'asset_id': self.asset_id,
+            'asset_name': self.asset.name if self.asset else None,
+            'checklist_id': self.checklist_id,
+            'schedule_type': self.schedule_type.name if self.schedule_type else None,
+            'interval_time': self.interval_time.name if self.interval_time else None,
+            'interval_usage': self.interval_usage,
+            'usage_unit': self.usage_unit.name if self.usage_unit else None,
+            'last_executed': self.last_executed.isoformat() if self.last_executed else None,
+            'next_due': self.next_due.isoformat() if self.next_due else None,
+        }
 
 class SensorType(enum.Enum):
     vibration = 'vibration'

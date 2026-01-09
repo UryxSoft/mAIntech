@@ -1,0 +1,39 @@
+<!-- Modal para Reportar Falla -->
+<div id="report-fault-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4>Reportar Falla</h4>
+            <button class="btn-close" data-dismiss="modal">&times;</button>
+        </div>
+        <form id="fault-report-form">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="fault-asset-search">Activo Afectado <span class="required">*</span></label>
+                    <input type="text" id="fault-asset-search" class="form-control" placeholder="Buscar activo por nombre o código...">
+                    <input type="hidden" id="fault-asset-id" name="asset_id">
+                </div>
+                <div class="form-group">
+                    <label for="fault-description">Descripción de la Falla <span class="required">*</span></label>
+                    <textarea id="fault-description" name="description" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="operational-impact">Impacto Operacional</label>
+                    <select id="operational-impact" name="operational_impact" class="form-select">
+                        <option value="low">Bajo (no afecta producción)</option>
+                        <option value="medium">Medio (producción ralentizada)</option>
+                        <option value="high">Alto (línea de producción detenida)</option>
+                        <option value="critical">Crítico (riesgo de seguridad o daño mayor)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fault-attachments">Adjuntar Evidencias (Fotos)</label>
+                    <input type="file" id="fault-attachments" class="filepond-input" multiple>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btn-submit-fault" class="btn btn-danger">Reportar Falla</button>
+            </div>
+        </form>
+    </div>
+</div>
