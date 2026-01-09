@@ -1,0 +1,8 @@
+# Python bytecode
+__pycache__/
+
+# Logs
+*.log
+
+# Instance folder
+instance/

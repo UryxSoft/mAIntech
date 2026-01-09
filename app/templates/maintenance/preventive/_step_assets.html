@@ -1,0 +1,19 @@
+<div class="wizard-step-content">
+    <h3>Paso 1: Selección de Activo(s)</h3>
+    <p>Elige el activo al que se aplicará este plan de mantenimiento.</p>
+
+    <div class="form-group">
+        <label for="asset-search">Buscar Activo por Nombre o Código</label>
+        <div class="autocomplete-container">
+            <input type="text" id="asset-search" class="form-control" placeholder="Escribe para buscar...">
+            <input type="hidden" id="selected-asset-id" name="asset_id">
+            <div id="asset-suggestions" class="autocomplete-suggestions">
+                <!-- Las sugerencias de activos se cargarán aquí -->
+            </div>
+        </div>
+        <div id="asset-selection-display" class="selection-display" style="display: none;">
+            <h4>Activo Seleccionado:</h4>
+            <p id="selected-asset-info"></p>
+        </div>
+    </div>
+</div>

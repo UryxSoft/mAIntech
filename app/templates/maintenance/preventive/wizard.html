@@ -1,0 +1,52 @@
+{% extends "main_.html" %}
+
+{% block title %}Nuevo Plan de Mantenimiento Preventivo{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <header class="page-header">
+        <h1>Asistente de Mantenimiento Preventivo</h1>
+    </header>
+
+    <div class="card wizard-container" id="preventive-wizard">
+        <!-- Indicador de Pasos (Stepper) -->
+        <div class="wizard-steps">
+            <div class="step active" data-step="1"><span>1</span> Activos</div>
+            <div class="step" data-step="2"><span>2</span> Programación</div>
+            <div class="step" data-step="3"><span>3</span> Tareas</div>
+            <div class="step" data-step="4"><span>4</span> Recursos</div>
+            <div class="step" data-step="5"><span>5</span> Confirmación</div>
+        </div>
+
+        <!-- Contenido de los Pasos -->
+        <div class="wizard-content">
+            <div class="step-panel active" data-step-panel="1">
+                {% include 'maintenance/preventive/_step_assets.html' %}
+            </div>
+            <div class="step-panel" data-step-panel="2">
+                {% include 'maintenance/preventive/_step_schedule.html' %}
+            </div>
+            <div class="step-panel" data-step-panel="3">
+                {% include 'maintenance/preventive/_step_tasks.html' %}
+            </div>
+            <div class="step-panel" data-step-panel="4">
+                {% include 'maintenance/preventive/_step_resources.html' %}
+            </div>
+            <div class="step-panel" data-step-panel="5">
+                {% include 'maintenance/preventive/_step_confirm.html' %}
+            </div>
+        </div>
+
+        <!-- Navegación del Wizard -->
+        <div class="wizard-navigation">
+            <button id="wizard-btn-prev" class="btn btn-secondary" disabled>Anterior</button>
+            <button id="wizard-btn-next" class="btn btn-primary">Siguiente</button>
+            <button id="wizard-btn-finish" class="btn btn-success" style="display: none;">Finalizar</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/preventive.js') }}"></script>
+{% endblock %}
