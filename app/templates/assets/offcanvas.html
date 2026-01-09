@@ -1,0 +1,18 @@
+<!-- Offcanvas para Crear/Editar Activo -->
+<div id="asset-offcanvas" class="offcanvas">
+    <div class="offcanvas-header">
+        <h2 id="offcanvas-title">Crear Nuevo Activo</h2>
+        <button id="btn-close-offcanvas" class="btn-close">&times;</button>
+    </div>
+    <div class="offcanvas-body">
+        <div id="form-error-notification" class="alert alert-danger" style="display: none;">
+            <ul id="form-error-list"></ul>
+        </div>
+        {% include 'assets/_form.html' %}
+    </div>
+    <div class="offcanvas-footer">
+        <button id="btn-cancel-offcanvas" class="btn btn-secondary">Cancelar</button>
+        <button id="btn-save-asset" class="btn btn-primary">Guardar Activo</button>
+    </div>
+</div>
+<div id="offcanvas-backdrop" class="offcanvas-backdrop"></div>

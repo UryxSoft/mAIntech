@@ -1,0 +1,25 @@
+<div class="asset-detail-container">
+    <div class="detail-header">
+        <h3 id="detail-asset-name"></h3>
+        <span id="detail-asset-status" class="badge"></span>
+    </div>
+    <div class="tabs">
+        <div class="tab-nav">
+            <button class="tab-link active" data-tab="tab-info">Información</button>
+            <button class="tab-link" data-tab="tab-docs">Documentos</button>
+            <button class="tab-link" data-tab="tab-history">Historial</button>
+        </div>
+        <div id="tab-info" class="tab-content active">
+            <p><strong>Código:</strong> <span id="detail-asset-code"></span></p>
+            <p><strong>Categoría:</strong> <span id="detail-asset-category"></span></p>
+            <p><strong>Ubicación:</strong> <span id="detail-asset-location"></span></p>
+            <div id="asset-qr-code"></div>
+        </div>
+        <div id="tab-docs" class="tab-content">
+            <ul id="document-list"></ul>
+        </div>
+        <div id="tab-history" class="tab-content">
+            {% include 'assets/_timeline.html' %}
+        </div>
+    </div>
+</div>

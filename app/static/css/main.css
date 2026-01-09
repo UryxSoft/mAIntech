@@ -1,0 +1,96 @@
+/* static/css/main.css */
+/* ------------------------- */
+/* VARIABLES Y TEMA OSCURO   */
+/* ------------------------- */
+:root {
+    --bg-main: #1a1c23;
+    --bg-surface: #242831;
+    --bg-surface-hover: #2c313a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border-color: #3a404d;
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --danger-color: #dc3545;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+
+    --font-family: 'Inter', sans-serif;
+    --header-height: 60px;
+    --sidebar-width: 240px;
+}
+
+/* ------------------------- */
+/* RESET Y ESTILOS GLOBALES  */
+/* ------------------------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: var(--font-family);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-size: 16px;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* ------------------------- */
+/* LAYOUT PRINCIPAL          */
+/* ------------------------- */
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border-color);
+    padding: 20px;
+}
+
+.sidebar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.sidebar nav ul {
+    list-style: none;
+}
+
+.sidebar nav li a {
+    display: block;
+    padding: 12px 15px;
+    border-radius: 6px;
+    color: var(--text-secondary);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.sidebar nav li.active a,
+.sidebar nav li a:hover {
+    background-color: var(--bg-surface-hover);
+    color: var(--text-primary);
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}

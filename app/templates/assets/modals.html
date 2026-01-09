@@ -1,0 +1,65 @@
+<!-- Almacén de Modales para el Módulo de Activos -->
+
+<!-- 1. Modal de Confirmación de Eliminación -->
+<div id="delete-asset-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4>Confirmar Eliminación</h4>
+            <button class="btn-close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>¿Estás seguro de que deseas eliminar el activo <strong id="delete-asset-name"></strong>?</p>
+            <p class="text-danger">Esta acción no se puede deshacer y eliminará la asociación con su historial. No se podrá eliminar si tiene órdenes de trabajo abiertas.</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button id="btn-confirm-delete" class="btn btn-danger">Eliminar Activo</button>
+        </div>
+    </div>
+</div>
+
+<!-- 2. Modal para Cambiar Ubicación -->
+<div id="change-location-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4>Mover Activo</h4>
+            <button class="btn-close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Moviendo el activo: <strong id="move-asset-name"></strong></p>
+            <div class="form-group">
+                <label for="new-location-id">Selecciona la nueva ubicación:</label>
+                <select id="new-location-id" class="form-select">
+                    <!-- Opciones de ubicación jerárquicas cargadas con JS -->
+                </select>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button id="btn-confirm-move" class="btn btn-primary">Mover Activo</button>
+        </div>
+    </div>
+</div>
+
+<!-- 3. Modal para Visualizar QR -->
+<div id="view-qr-modal" class="modal" style="display: none;">
+    <div class="modal-content text-center">
+        <div class="modal-header">
+            <h4>Código QR del Activo</h4>
+            <button class="btn-close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <h5 id="qr-asset-name"></h5>
+            <div id="qr-code-container" class="qr-container">
+                <!-- El QR se generará aquí -->
+            </div>
+            <p id="qr-asset-code" class="text-muted"></p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button id="btn-print-qr-modal" class="btn btn-primary">Imprimir</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-backdrop" style="display: none;"></div>

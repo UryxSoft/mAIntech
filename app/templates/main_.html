@@ -1,181 +1,52 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Dashboard - Layout Dinámico</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/base.css">
+    <title>{% block title %}mAIntech CMMS{% endblock %}</title>
+
+    <!-- Estilos de TOAST UI -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/grid/latest/tui-grid.min.css" />
+
+    <!-- Estilos de FilePond -->
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+
+    <!-- Estilos de la aplicación -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets.css') }}">
+
+    {% block styles %}{% endblock %}
 </head>
-<body data-theme="light"> 
-    
-    <div class="app-container" role="application">
-
-        <nav class="app-sidebar" id="app-sidebar" aria-label="Navegación principal">
-            <button class="app-sidebar__item app-sidebar__item--toggle" id="menu-toggle" aria-label="Alternar menú principal">
-                <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-            </button>
-
-            <ul class="app-sidebar__list" role="menu">
-                <li class="app-sidebar__list-item" role="none">
-                    <a href="#" class="app-sidebar__item" role="menuitem" aria-label="Dashboard" data-panel-target="">
-                        <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7v7H3z"></path><path d="M14 3h7v7h-7z"></path><path d="M14 14h7v7h-7z"></path><path d="M3 14h7v7H3z"></path></svg>
-                    </a>
-                </li>
-                
-                <li class="app-sidebar__list-item" role="none">
-                    <button class="app-sidebar__item" id="reports-toggle" data-panel-target="reports-panel" aria-controls="reports-panel" aria-expanded="true" role="menuitem" aria-label="Reports">
-                        <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
-                    </button>
-                </li>
-                
-                <li class="app-sidebar__list-item" role="none">
-                    <button class="app-sidebar__item" id="settings-toggle" data-panel-target="settings-panel" aria-controls="settings-panel" aria-expanded="false" role="menuitem" aria-label="Settings">
-                        <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V22a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0-.33-1.82 1.65 1.65 0 0 0-1.51-1H2a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33 1.65 1.65 0 0 0 1-1.51V2a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82 1.65 1.65 0 0 0 1.51 1H22a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1 1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06z"></path></svg>
-                    </button>
-                </li>
-                
-                <li class="app-sidebar__list-item" role="none">
-                    <a href="#" class="app-sidebar__item" role="menuitem" aria-label="Stats" data-panel-target="">
-                        <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M6 20v-8M18 20v-4"></path><path d="M4 14l8-8 8 8"></path></svg>
-                    </a>
-                </li>
-            </ul>
-
-            <div class="app-theme-switch-container">
-                <button class="app-theme-switch" id="theme-toggle" aria-label="Alternar modo oscuro">
-                    <span class="app-theme-switch__icon app-theme-switch__icon--sun">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    </span>
-                    <span class="app-theme-switch__icon app-theme-switch__icon--moon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                    </span>
-                </button>
-            </div>
-        </nav>
-
-        <div style="grid-column: 1 / 2;"></div> 
-
-
-        <div class="app-submenu-panel" id="reports-panel" aria-hidden="true">
-             <header class="app-submenu-panel__header">
-                <h2 class="app-submenu-panel__title">Reports</h2>
-                <button class="app-submenu-panel__icon-button" aria-label="Añadir nuevo reporte">
-                    <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                </button>
-            </header>
-            <ul class="app-submenu-panel__list" role="menu">
-                <li class="app-submenu-panel__list-item" role="none">
-                    <a href="#" class="app-submenu-panel__link app-submenu-panel__link--active" role="menuitem">
-                        <svg class="app-icon app-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7v7H3z"></path><path d="M14 3h7v7h-7z"></path><path d="M14 14h7v7h-7z"></path><path d="M3 14h7v7H3z"></path></svg>
-                        Overview
-                    </a>
-                </li>
-                <li class="app-submenu-panel__list-item" role="none">
-                    <a href="#" class="app-submenu-panel__link" role="menuitem">
-                        <svg class="app-icon app-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-                        All reports <span class="app-submenu-panel__count">23</span>
-                    </a>
-                </li>
-                 <li class="app-submenu-panel__list-item" role="none">
-                    <a href="#" class="app-submenu-panel__link app-submenu-panel__link--chevron" role="menuitem" aria-haspopup="true">
-                        <svg class="app-icon app-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 17.75l-6-5.75L12 6.25l6 5.75-6 5.75z"></path></svg>
-                        Add favorites
-                    </a>
-                </li>
-            </ul>
-
-            <div class="app-submenu-panel__section" role="group">
-                <button class="app-submenu-panel__section-toggle" aria-expanded="true" aria-controls="conversation-topics-content">
-                    Conversation topics
-                    <svg class="app-icon app-icon--arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </button>
-                <div class="app-submenu-panel__section-content" id="conversation-topics-content">
-                    <a href="#" class="app-submenu-panel__sub-link" role="menuitem">Topics</a>
-                    <a href="#" class="app-submenu-panel__sub-link" role="menuitem">Suggestions</a>
-                </div>
-            </div>
-            
-             <hr class="app-submenu-panel__divider">
-            
-            <div class="app-submenu-panel__bottom-links">
-                <a href="#" class="app-submenu-panel__link app-submenu-panel__link--chevron" role="menuitem">Human support</a>
-                <a href="#" class="app-submenu-panel__link app-submenu-panel__link--chevron" role="menuitem">Automation</a>
-            </div>
-        </div>
-
-
-        <div class="app-submenu-panel" id="settings-panel" aria-hidden="true">
-            <header class="app-submenu-panel__header">
-                <h2 class="app-submenu-panel__title">Settings</h2>
-                <button class="app-submenu-panel__icon-button app-submenu-panel__icon-button--close" aria-label="Cerrar submenú" data-toggle-close="settings-panel">
-                    <svg class="app-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6l-12 12M6 6l12 12"></path></svg>
-                </button>
-            </header>
-
-            <ul class="app-submenu-panel__list" role="menu">
-                <li class="app-submenu-panel__list-item" role="none">
-                    <a href="#" class="app-submenu-panel__link" role="menuitem">
-                        <svg class="app-icon app-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                        Profile
-                    </a>
-                </li>
-                <li class="app-submenu-panel__list-item" role="none">
-                    <a href="#" class="app-submenu-panel__link" role="menuitem">
-                         <svg class="app-icon app-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                        Security and 2FA
-                    </a>
-                </li>
-                 <li class="app-submenu-panel__list-item" role="none">
-                    <a href="#" class="app-submenu-panel__link" role="menuitem">
-                        <svg class="app-icon app-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                        Appearance
-                    </a>
-                </li>
-                <li class="app-submenu-panel__list-item" role="none">
-                    <a href="#" class="app-submenu-panel__link" role="menuitem">
-                        <svg class="app-icon app-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h.01"></path><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><line x1="16" y1="12" x2="8" y2="12"></line><line x1="16" y1="16" x2="8" y2="16"></line></svg>
-                        Billing and Plans
-                    </a>
-                </li>
-                <li class="app-submenu-panel__list-item" role="none">
-                    <a href="#" class="app-submenu-panel__link" role="menuitem">
-                        <svg class="app-icon app-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                        Workspace
-                    </a>
-                </li>
-                <li class="app-submenu-panel__list-item" role="none">
-                    <a href="#" class="app-submenu-panel__link" role="menuitem">
-                        <svg class="app-icon app-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                        Team
-                    </a>
-                </li>
-                <li class="app-submenu-panel__list-item" role="none">
-                    <a href="#" class="app-submenu-panel__link app-submenu-panel__link--active" role="menuitem">
-                        <svg class="app-icon app-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-                        Notifications
-                    </a>
-                </li>
-                 <li class="app-submenu-panel__list-item" role="none">
-                    <a href="#" class="app-submenu-panel__link" role="menuitem">
-                        <svg class="app-icon app-icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.29 7 12 12 20.71 7"></polyline><line x1="12" y1="22.76" x2="12" y2="12"></line></svg>
-                        Integrations
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <main class="app-main-content" id="app-main-content" aria-label="Contenido principal">
-            <h1 class="app-main-content__title">Dashboard</h1>
-            <p>Este es el contenido principal de la aplicación. Su ancho se ajusta automáticamente gracias al CSS Grid cuando el panel lateral se expande o colapsa.</p>
-            <div class="app-main-content__placeholder" style="height: 200px;">Reportes de Ventas</div>
-            <div class="app-main-content__placeholder" style="height: 350px;">Gráfico de Usuarios Activos</div>
-             <div class="app-main-content__placeholder" style="height: 250px;">Tabla de Transacciones Recientes</div>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">mAIntech</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li class="active"><a href="{{ url_for('assets.list_page') }}">Activos</a></li>
+                    <li><a href="#">Órdenes de Trabajo</a></li>
+                    <li><a href="#">Inventario</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            {% block content %}{% endblock %}
         </main>
     </div>
 
-    <script src="js/base.js"></script>
+    <!-- Librerías JS -->
+    <script src="https://uicdn.toast.com/grid/latest/tui-grid.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+    <!-- Scripts de la aplicación -->
+    <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/assets.js') }}"></script>
+
+    {% block scripts %}{% endblock %}
 </body>
 </html>
